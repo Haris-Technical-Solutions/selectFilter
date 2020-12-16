@@ -1,0 +1,31 @@
+<table>
+
+<tr>
+<th><label for="category">Categories</label></th>
+<th><label for="sub-category">Sub-Categories</label></th>
+
+</tr>
+<tr>
+<td>
+
+    <select class='form-control firstList selectFilter' data-target='secondList'>
+        <option value="none">Select</option>
+        <option data-ref='hk'>hongkong</option>
+        <option data-ref='ch'>china</option>
+    </select>
+</td>
+<td>
+
+    <select class='form-control secondList selectFilter' >
+        <option value="none">Select</option>
+        <option value="1" data-belong='hk'>hong</option>
+        <option value="1" data-belong='hk'>hong1</option>
+        <option value="2" data-belong='ch'>chi</option>
+        <option value="2" data-belong='ch'>chi1</option>
+    </select>
+</td>
+</tr>
+</table>
+<script src="http://code.jquery.com/jquery.min.js"></script>
+<script >$(".selectFilter").on("change",function(){var e=$(this).data("target"),i=$(this).find(":selected").data("ref");$("select."+e).val("none"),null==i?$("select."+e).find("option").each(function(){console.log("inside undefined"),$(this).removeAttr("disabled hidden")}):$("select."+e).find("option").each(function(){var e=$(this).data("belong"),t=$(this).val();i!=e&&-1!=t?($(this).prop("disabled",!0),$(this).prop("hidden",!0)):($(this).prop("disabled",!1),$(this).prop("hidden",!1))})});
+</script>
